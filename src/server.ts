@@ -30,8 +30,8 @@ app.post("/sum", (request, response) => {
 });
 
 type TUser = {
-	name: String;
-	email: String;
+	name: string;
+	email: string;
 };
 
 const users: Array<TUser> = [];

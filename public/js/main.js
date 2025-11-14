@@ -4,12 +4,14 @@ const email_input = document.getElementById("email");
 
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
-	console.log("WERE HERE");
 
 	const body = {
 		name: name_input.value,
 		email: email_input.value,
 	};
+
+	name_input.value = "";
+	email_input.value = "";
 
 	const url = "http://localhost:3000/users";
 	const options = {
@@ -19,6 +21,5 @@ form.addEventListener("submit", (event) => {
 		},
 		body: JSON.stringify(body),
 	};
-
 	fetch(url, options);
 });
