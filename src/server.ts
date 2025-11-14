@@ -4,10 +4,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
-
-app.get("/", (request, response) => {
-	response.send("It's working!");
-});
+app.use(express.static("public"));
 
 app.get("/hello", (request, response) => {
 	const response_json = {
@@ -21,7 +18,6 @@ app.get("/echo/:id", (request, response) => {
 });
 
 app.post("/sum", (request, response) => {
-	console.log(request.body);
 	let numbers: Array<number> = request.body.numbers;
 	let sum = 0;
 	for (let number of numbers) {
@@ -31,6 +27,18 @@ app.post("/sum", (request, response) => {
 		sum: sum,
 	};
 	response.send(response_json);
+});
+
+type TUser = {
+	name: String;
+	email: String;
+};
+
+const users: Array<TUser> = [];
+
+app.post("/users", (request, response) => {
+	users.push(request.body);
+	response.send("User successfully added");
 });
 
 app.listen(port, () => {
