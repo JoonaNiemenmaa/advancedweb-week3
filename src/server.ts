@@ -14,6 +14,10 @@ app.get("/hello", (req, res) => {
 	res.send(response_json);
 });
 
+app.get("/echo/:id", (request, response) => {
+	response.send(request.params);
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
