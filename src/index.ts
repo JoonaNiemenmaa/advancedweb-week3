@@ -41,6 +41,11 @@ app.post("/users", (request, response) => {
 	response.send("User successfully added");
 });
 
+app.get("/users", (request, response) => {
+	console.log(`${request.hostname} requested users`);
+	response.send(users);
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
